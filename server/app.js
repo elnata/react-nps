@@ -8,7 +8,7 @@ const httpProxy = require("http-proxy");
 const proxy = httpProxy.createProxyServer({});
 
 const { APP_ID: appId, INTEGRATION_ID: integrationId, KEY_ID, SECRET, REACT_APP_SERVER_URL } = process.env;
-const REACT_APP_PORT = process.env.PORT || 3000;
+const REACT_APP_PORT = process.env.PORT || 9100;
 
 const defaultClient = SunshineConversationsApi.ApiClient.instance;
 const basicAuth = defaultClient.authentications["basicAuth"];

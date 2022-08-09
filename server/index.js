@@ -3,7 +3,7 @@ require('dotenv').config();
 const app = require('./app');
 
 const SERVICE_PORT = 8000;
-const REACT_APP_PORT = process.env.PORT || 3000;
+const REACT_APP_PORT = process.env.PORT || 9100;
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 app.listen(SERVICE_PORT, () => {
