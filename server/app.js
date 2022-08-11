@@ -8,7 +8,7 @@ const httpProxy = require("http-proxy");
 const proxy = httpProxy.createProxyServer({});
 
 const { APP_ID: appId, INTEGRATION_ID: integrationId, KEY_ID, SECRET, REACT_APP_SERVER_URL } = process.env;
-const REACT_APP_PORT = process.env.PORT || 9100;
+const REACT_APP_PORT = process.env.PORT || 3000;
 
 const defaultClient = SunshineConversationsApi.ApiClient.instance;
 const basicAuth = defaultClient.authentications["basicAuth"];
@@ -53,7 +53,7 @@ async function handleDate(req, res) {
   var { comentario, nota1, nota2, userId, conversationId } = req.body;
   // userId = "5aed5dde0fa99708a1ce2c40"
   // const formattedDate = moment(selectedDate).format("MMM Do YYYY");
-  const respost = `Nota1: ${nota1} nota2: ${nota2} comentario: ${comentario}`
+  const respost = `${nota1}-${nota2}-${comentario}`
   try {
         let messagePost = new SunshineConversationsApi.MessagePost();
     messagePost.setAuthor({ type: "user", userId });

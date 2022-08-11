@@ -1,11 +1,11 @@
 import React, { Component, useState } from "react";
+import { useParams } from 'react-router-dom'
 import DatePicker from "react-datepicker"; // https://reactdatepicker.com/ for options and settings.
 import { Helmet } from "react-helmet";
 import qs from "qs";
 import moment from "moment";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 
 
 // import Button from "./Button";
@@ -30,12 +30,15 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 
+
 //Sentiment
 const StyledRating = styled(Rating)(({ theme }) => ({
   '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
     color: theme.palette.action.disabled,
   },
 }));
+
+
 
 // const labels = {  
 //   1: 'Useless',
@@ -69,15 +72,18 @@ function getLabelText2(value2) {
 
 // envia os dados
 function submit(value1,value2, name){
+  console.log(value1);
+  console.log(value2);
+  console.log(name);
+  // console.log(userId)
   const dados = {
     comentario: name,
     nota1: value1,
     nota2: value2,
-    userId: "d21c9464c11d8c80e12ba9da",
-    conversationId: "022a7da8afec3326fe8d805c",
+    userId: userId,
+    conversationId: conversationId,
   };
-  // const { server } = this.props;
-  // const { selectedDate, userId, conversationId } = this.state;
+  
   fetch(`https://f04a-168-0-235-117.ngrok.io/date`, {
   method: "POST",
   body: JSON.stringify(dados),
@@ -88,9 +94,7 @@ function submit(value1,value2, name){
   .then((response) => {
     console.log(
       response,
-      `Submitted ${selectedDate.format(
-        "MMM Do YYYY"
-      )} for user(${userId}) in conversation(${conversationId})`
+      `Submitted for user(${userId}) in conversation(${conversationId})`
     );
     window.WebviewSdk.close();
   })
@@ -99,6 +103,7 @@ function submit(value1,value2, name){
 
 
 export default function DatePickerSimple() {
+  
   const [value, setValue1] = React.useState(5);
   const [hover1, setHover1] = React.useState(5);
   const [value2, setValue2] = React.useState(10);
@@ -201,9 +206,7 @@ return (
           display: 'flex'
         }}
         >        
-        
-
-
+      
         <StyledRating
         name="highlight-selected-only"
         defaultValue={3}
@@ -216,9 +219,6 @@ return (
       />
 
 
-
-        
-      
       </Box>
 
       <Box
@@ -269,29 +269,11 @@ return (
           setHover2(newHover2);
         }}
       />
-      {/* {value !== null && (
-        <Box sx={{ ml: 10 }}>{labelsStars[hover2 !== -1 ? hover2 : value]}</Box>
-      )} */}
+      
 
       
      
     </Box>
-
-    {/* <Box
-      sx={{
-        '& > legend': { mt: 4 },
-        position: 'relative',
-        height: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        display: 'flex',
-        margemTop: 1
-      }}
-      >
-      {value !== null && (
-        <Box sx={{ ml: 3 }}>{labelsStars[hover2 !== -1 ? hover2 : value]}</Box>
-      )}
-    </Box> */}
 
     <Box
     sx={{
@@ -316,9 +298,7 @@ return (
           margemTop: 30
         }}
         >
-        
-         
-  
+          
         <TextareaAutosize id="outlined-basic"
         style={{ width: 300, height: 50 }}
         label="Name"
@@ -326,7 +306,6 @@ return (
         onChange={handleChange}
          />
         </Box>
-
 
         <Box
         sx={{
@@ -346,43 +325,10 @@ return (
         Enviar
         </Button>
       </ThemeProvider>
-        {/* <Button variant="contained" color="orange"  onClick={() => {
-            submit(value,value2, name)
-          }}>
-          Enviar
-        </Button> */}
-        
       </Stack>
       </Box>
- </> 
-    
-    
-    
-    
+ </>     
     );
-  //   <StyledRating
-  //     name="highlight-selected-only"
-  //     defaultValue={2}
-  //     IconContainerComponent={IconContainer}
-  //     getLabelText={(value) => customIcons[value].label}
-  //     highlightSelectedOnly
-  //   />
-  // );
-    // return (
-    //   <div id="datepicker-simple">
-    //     <Helmet title={"Select Date"} />
-    //     <DatePicker
-    //       inline
-    //       minDate={moment()}
-    //       selected={selectedDate}
-    //       onChange={(date) => this.handleChange(date)}
-    //     />
-    //     <div className="nav">
-    //       <Button selectedDate={selectedDate} submitDate={this.submitDate} />
-    //     </div>
-    //   </div>
-    // );
-  // }
+ 
 }
 
-// export default DatePickerSimple;
