@@ -30,6 +30,16 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 
+var userId
+var conversationId
+function captureDataUser(){
+  const receivedParameters = qs.parse(window.location.search, {
+    ignoreQueryPrefix: true,
+  });
+  userId = receivedParameters.userId
+  conversationId = receivedParameters.conversationId
+}
+
 
 //Sentiment
 const StyledRating = styled(Rating)(({ theme }) => ({
@@ -72,6 +82,7 @@ function getLabelText2(value2) {
 
 // envia os dados
 function submit(value1,value2, name){
+  captureDataUser()
   console.log(value1);
   console.log(value2);
   console.log(name);
@@ -84,7 +95,7 @@ function submit(value1,value2, name){
     conversationId: conversationId,
   };
   
-  fetch(`https://f04a-168-0-235-117.ngrok.io/date`, {
+  fetch(`https://bf53-168-0-235-145.ngrok.io/date`, {
   method: "POST",
   body: JSON.stringify(dados),
   headers: {

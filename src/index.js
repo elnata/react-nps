@@ -13,7 +13,7 @@ const AppWithProps = () => <App server={server} />
 
 const routes = [
     {
-        path: "/datepicker-simple/:userId/:conversationId",
+        path: "/datepicker-simple",
         component: DatePickerSimpleWithProps,
         exact: true
     },

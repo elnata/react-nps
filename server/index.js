@@ -7,7 +7,7 @@ const SERVICE_PORT = 8000;
 const REACT_APP_PORT = process.env.PORT || 3000;
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const whitelist = ["https://f04a-168-0-235-117.ngrok.io"]
+const whitelist = ["https://bf53-168-0-235-145.ngrok.io"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
