@@ -95,7 +95,7 @@ function submit(value1,value2, name){
     conversationId: conversationId,
   };
   
-  fetch(`https://bf53-168-0-235-145.ngrok.io/date`, {
+  fetch(`https://chatbot-dev.conectcar.com/nps/date`, {
   method: "POST",
   body: JSON.stringify(dados),
   headers: {

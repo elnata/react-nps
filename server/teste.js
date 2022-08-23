@@ -21,7 +21,7 @@ data.content = {
             type: 'webview',
             size: 'full',
             text: 'botao da data', // This text is rendered as a button
-            uri: 'https://bf53-168-0-235-145.ngrok.io/datepicker-simple?userId=676683b8b96e0bffa8aef053&conversationId=28d26e4fb397c4c12fad9dfd',
+            uri: 'https://chatbot-dev.conectcar.com/nps?userId=676683b8b96e0bffa8aef053&conversationId=28d26e4fb397c4c12fad9dfd',
             fallback: 'https://smooch.io',
         }
     ]
